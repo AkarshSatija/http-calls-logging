@@ -12,12 +12,6 @@ app.get('/', function(req, res) {
 });
 app.all('/log', outp);
 
-var port = process.env.PORT || 3000;
-
-app.listen(port, function() {
-	console.log('Example app listening on port 3000!');
-});
-
 app.use(function(err, req, res, next) {
 	// If the error object doesn't exists
 	if (!err) return next();
@@ -40,10 +34,21 @@ app.use(function(req, res) {
 });
 
 function outp(req, res) {
-	res.json({
+	var output={
 		query: req.query,
 		headers: req.headers,
 		body: req.body,
 		METHOD: req.method
-	});
+	};
+	res.json(output);
+	console.log(output);
 }
+
+
+
+
+var port = process.env.PORT || 3000;
+
+app.listen(port, function() {
+	console.log('Example app listening on port 3000!');
+});
