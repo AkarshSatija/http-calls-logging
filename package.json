@@ -4,19 +4,13 @@
   "description": "Just to log http calls of different types",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-
   "engines": {
     "node": ">=0.10.28",
     "npm": ">=1.4.28"
   },
-  "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-
-
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/akarshsatija/http-calls-logging.git"
@@ -29,6 +23,7 @@
   "homepage": "https://github.com/akarshsatija/http-calls-logging#readme",
   "dependencies": {
     "body-parser": "^1.15.1",
-    "express": "^4.13.4"
+    "express": "^4.13.4",
+    "forever": "^0.15.2"
   }
 }
