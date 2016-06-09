@@ -12,7 +12,9 @@ app.get('/', function(req, res) {
 });
 app.all('/log', outp);
 
-app.listen(80, function() {
+var port = process.env.PORT || 3000;
+
+app.listen(port, function() {
 	console.log('Example app listening on port 3000!');
 });
 
