@@ -1,0 +1,16 @@
+# Node and related ecosystem
+# ==========================
+.nodemonignore
+.sass-cache/
+npm-debug.log
+node_modules/
+app/tests/coverage/
+.bower-*/
+.idea/
+
+
+# Sublime editor
+# ==============
+.sublime-project
+*.sublime-project
+*.sublime-workspace
