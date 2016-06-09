@@ -2,6 +2,9 @@ var bodyParser = require('body-parser');
 var express = require('express');
 var app = express();
 
+
+app.use(logResponseBody);
+
 app.use(bodyParser.urlencoded({
 	extended: true
 }));
@@ -20,7 +23,7 @@ app.use(function(err, req, res, next) {
 	console.error(err.stack);
 
 	// Error page
-	res.status(500).render('500', {
+	res.status(500).json({
 		error: err.stack
 	});
 });
@@ -44,8 +47,30 @@ function outp(req, res) {
 	console.log(output);
 }
 
+function logResponseBody(req, res, next) {
+  var oldWrite = res.write,
+      oldEnd = res.end;
 
+  var chunks = [];
 
+  res.write = function (chunk) {
+    chunks.push(chunk);
+
+    oldWrite.apply(res, arguments);
+  };
+
+  res.end = function (chunk) {
+    if (chunk)
+      chunks.push(chunk);
+
+    var body = Buffer.concat(chunks).toString('utf8');
+    console.log(req.path, body);
+
+    oldEnd.apply(res, arguments);
+  };
+
+  next();
+}
 
 var port = process.env.PORT || 3000;
 
