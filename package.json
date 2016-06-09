@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/akarshsatija/http-calls-logging/issues"
   },
-  "homepage": "https://github.com/akarshsatija/http-calls-logging#readme"
+  "homepage": "https://github.com/akarshsatija/http-calls-logging#readme",
+  "dependencies": {
+    "body-parser": "^1.15.1"
+  }
 }
