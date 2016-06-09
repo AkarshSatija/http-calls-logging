@@ -16,6 +16,27 @@ app.listen(3000, function() {
 	console.log('Example app listening on port 3000!');
 });
 
+app.use(function(err, req, res, next) {
+	// If the error object doesn't exists
+	if (!err) return next();
+
+	// Log it
+	console.error(err.stack);
+
+	// Error page
+	res.status(500).render('500', {
+		error: err.stack
+	});
+});
+
+// Assume 404 since no middleware responded
+app.use(function(req, res) {
+	res.status(404).json({
+		url: req.originalUrl,
+		error: 'Not Found'
+	});
+});
+
 function outp(req, res) {
 	res.json({
 		query: req.query,
